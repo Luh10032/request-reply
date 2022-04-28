@@ -1,6 +1,5 @@
 import * as Redis from 'ioredis'
-import { EventEmitter } from "stream";
-import { Msg } from "./Msg";
+import { Msg_old as Msg } from "./event";
 import {timeout} from './unit'
 
 
@@ -26,7 +25,6 @@ export class IoRedisClass {
     
             const redis_pub = this.client.duplicate();
             await redis_pub.publish(res_obj.reply, JSON.stringify(res_obj))
-
             //redis_pub.disconnect();
         })
         console.log(`Subscribe subject: ${subject} `)
