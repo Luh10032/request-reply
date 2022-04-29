@@ -1,6 +1,5 @@
 
 
-//name 本身就是topic
 export class BaseEvent {
     timestamp: Date;
     uuid: string;
@@ -21,6 +20,10 @@ export class BaseEvent {
     }
 
 }
+
+
+
+
 
 export class Msg_old {
     data: string;

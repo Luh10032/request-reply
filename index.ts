@@ -4,8 +4,9 @@ import {ReqRep,ArlinqEvent} from './src/index'
 (async () => {
   const rclass = new ReqRep();
   const msg=await rclass.subscribe(ArlinqEvent.toString())
-  console.log("Server:get request:",msg);
+  console.log("Server:get request:",msg.data);
   msg.respond("okkk");
+  rclass.quit();
 })()
 
 
