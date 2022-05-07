@@ -13,17 +13,15 @@ export class RequestReplyClass {
     }
     async subscribe(subject:string){
         const sc=StringCodec();
-        
-        const sub=this.nats.subscribe(subject)
+      
+        const sub=this.nats.subscribe(subject)  
        console.log("subscribe ",subject)
-   
         for await (const m of sub){
             console.log(m.data)
             console.log(m.reply);
             console.log(m.subject);
             m.respond(sc.encode(`I get the message "${sc.decode(m.data)}"`))
             console.log(`[${sub.getProcessed()}]:${sc.decode(m.data)}`);
-
         }
     }
     async request(subject:string,msg:string){

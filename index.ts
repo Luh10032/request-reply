@@ -3,10 +3,15 @@ import {ReqRep,ArlinqEvent} from './src/index'
 /**reqrep */
 (async () => {
   const rclass = new ReqRep();
-  const msg=await rclass.subscribe(ArlinqEvent.toString())
-  console.log("Server:get request:",msg.data);
-  msg.respond("okkk");
+  const sub=await rclass.subscribe(ArlinqEvent.toString(),"caidynasty","toinxiao","tay9xiao","choinfield")
+  for await (const msg of sub) {
+    console.log("Server: receive msg:",msg.data)
+    msg.respond({value:"got it"});
+  }
   rclass.quit();
+
+
+  //console.log("sub quit")
 })()
 
 
